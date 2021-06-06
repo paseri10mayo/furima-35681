@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :shipment
   belongs_to :area
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_one_attached :image
   
   with_options presence: true do
