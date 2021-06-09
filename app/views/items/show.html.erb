@@ -7,7 +7,7 @@
       <%= "商品名" %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
+      <%= image_tag @item.image.variant(resize: '630x500'), class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -43,27 +43,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <td class="detail-value"><%= @item.name %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <td class="detail-value"><%= @item.categry_id %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <td class="detail-value"><%= @item.condition_id %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <td class="detail-value"><%= @item.charge_id %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <td class="detail-value"><%= @item.area_id %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%= @item.shipment_id %></td>
         </tr>
       </tbody>
     </table>
@@ -103,7 +103,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class="another-item"><%= @item.categry_id %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
