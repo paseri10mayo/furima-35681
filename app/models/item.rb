@@ -16,10 +16,12 @@ class Item < ApplicationRecord
     validates :text
     validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
-    validates :categry_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :condition_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :charge_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :area_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :shipment_id, numericality: { other_than: 0, message: "can't be blank" }
+  end
+  with_options numericality: { other_than: 0, message: "can't be blank" } do
+    validates :categry_id
+    validates :condition_id
+    validates :charge_id
+    validates :area_id
+    validates :shipment_id
   end
 end

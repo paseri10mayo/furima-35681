@@ -74,17 +74,35 @@ it '販売価格についての情報が必須であること' do
   expect(@item.errors.full_messages).to include("Price can't be blank", "Price Half-width number", "Price Out of setting range")
 end
 
-it '売価格は、¥300~¥9,999,999の間のみ保存可能であること' do
-  @item.price = '100'
+it '商品価格が299円以下では出品できない' do
+  @item.price = '299'
   @item.valid?
   expect(@item.errors.full_messages).to include("Price Out of setting range")
 end
 
-it "価格は半角数字のみでないとアイテムは保存できない" do
-  @item.price = "２０００"
+it '商品価格が10_000_000円以上では出品できない' do
+  @item.price = '10000001'
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price Out of setting range")
+end
+
+it "商品価格は半角数字のみでないとアイテムは保存できない" do
+  @item.price = '２０００'
   @item.valid?
   expect(@item.errors.full_messages).to include("Price Half-width number")
-    end
-   end
-  end
+end
+
+it "商品価格が半角英数字混合では出品できない" do
+  @item.price = 'l2ldd7'
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price Half-width number")
+end
+
+it "商品価格が半角英字のみでは出品できない" do
+  @item.price = 'kdjfl'
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price Half-width number")
+end
+end
+end
 end
