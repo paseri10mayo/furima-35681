@@ -75,13 +75,13 @@ it '販売価格についての情報が必須であること' do
 end
 
 it '商品価格が299円以下では出品できない' do
-  @item.price = '299'
+  @item.price = 299
   @item.valid?
   expect(@item.errors.full_messages).to include("Price Out of setting range")
 end
 
 it '商品価格が10_000_000円以上では出品できない' do
-  @item.price = '10000001'
+  @item.price = 10000001
   @item.valid?
   expect(@item.errors.full_messages).to include("Price Out of setting range")
 end
