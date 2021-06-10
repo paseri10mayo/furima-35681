@@ -62,12 +62,6 @@ it 'shipmentが未選択だと出品できない' do
   expect(@item.errors.full_messages).to include("Shipment can't be blank")
 end
 
-it 'priceが空だと出品できない' do
-  @item.price = ''
-  @item.valid?
-  expect(@item.errors.full_messages).to include("Price can't be blank")
-end
-
 it '販売価格についての情報が必須であること' do
   @item.price = ''
   @item.valid?
