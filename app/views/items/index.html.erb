@@ -128,11 +128,11 @@
     </div>
     <ul class='item-lists'>
 
-       <% @items.each do |item| %>
+       <%# <% @items.each do |item| %> 
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image.variant(resize: '630x500') , class: "item-img" %>
+          <%# <%= image_tag item.image.variant(resize: '630x500') , class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <%# <div class='sold-out'>
@@ -155,7 +155,7 @@
         </div>
         <% end %>
       </li>
-      <% end %>
+      <%# <% end %> 
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
