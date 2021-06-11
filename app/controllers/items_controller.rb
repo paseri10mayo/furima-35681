@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  # before_action :set_item, only: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -26,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   private
@@ -33,8 +33,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :text, :price, :categry_id, :condition_id, :charge_id, :area_id, :shipment_id ).merge(user_id:current_user.id)
   end
-
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
 end
