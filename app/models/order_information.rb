@@ -1,6 +1,6 @@
 class OrderInformation
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :address, :building, :phone, :item_id, :user_id
+  attr_accessor :postal_code, :area_id, :city, :address, :building, :phone, :item_id, :user_id
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
@@ -11,10 +11,10 @@ class OrderInformation
     validates :item_id
   end
 
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id, numericality: { other_than: 0, message: "can't be blank" }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    information.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone: phone, order_id: order.id)
+    Information.create(postal_code: postal_code, area_id: area_id, city: city, address: address, building: building, phone: phone, order_id: order.id)
   end
 end
