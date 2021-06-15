@@ -1,19 +1,19 @@
-# FactoryBot.define do
-#   factory :order_information do
+FactoryBot.define do
+  factory :order_information do
 
-#     postal_code {123-4567}
+    postal_code {'123-4567'}
 
-#     area_id     {1}
+    area_id     {1}
 
-#     city        {横浜市緑区}
+    city        {'横浜市緑区'}
 
-#     address     {青山1-1-1}
+    address     {'青山1-1-1'}
 
-#     building    {}
+    building    {}
 
-#     phone       {09012345678}
+    phone       {'09012345678'}
 
-#     association :user
-#     association :item
-#   end
-#   end
+    association :user
+    association :item
+  end
+  end
