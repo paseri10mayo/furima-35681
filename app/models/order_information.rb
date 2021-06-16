@@ -1,8 +1,11 @@
 class OrderInformation
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :city, :address, :building, :phone, :item_id, :user_id
+  attr_accessor :token, :postal_code, :area_id, :city, :address, :building, :phone, :item_id, :user_id
 
   with_options presence: true do
+
+    validates :token
+
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :address
