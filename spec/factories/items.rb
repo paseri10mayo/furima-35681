@@ -15,7 +15,7 @@ FactoryBot.define do
 
     shipment_id   {1}
 
-    area_id{1}
+    area_id       {1}
 
     association :user
 
