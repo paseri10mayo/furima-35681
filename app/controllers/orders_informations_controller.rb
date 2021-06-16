@@ -20,12 +20,12 @@ class OrdersInformationsController < ApplicationController
   private
 
   def order_params
-    params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], order_id: order.id)
   end
 
   def set_item
     @item = Item.find(params[:item_id])
-    redirect_to root_path unless current_user.id == @item.user_id
+    redirect_to root_path unless current_user.id == @item.user
   end
 
   def pay_item
