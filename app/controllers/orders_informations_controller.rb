@@ -1,4 +1,5 @@
 class OrdersInformationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -20,11 +21,11 @@ class OrdersInformationsController < ApplicationController
 
   def order_params
     params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
-    # params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(item_id: @item[:id], user_id: current_user.id, token: params[:token])
   end
 
   def set_item
     @item = Item.find(params[:item_id])
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 
   def pay_item
