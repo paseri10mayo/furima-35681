@@ -63,6 +63,12 @@ RSpec.describe OrderInformation, type: :model do
         expect(@order_information.errors.full_messages).to include('Phone is invalid.')
       end
       
+      it 'phoneが12桁以上では保存できないこと' do
+        @order_information.phone = '23334444444444444'
+        @order_information.valid?
+        expect(@order_information.errors.full_messages).to include('Phone is invalid.')
+      end
+
       it 'userが紐付いていないと保存できないこと' do
         @order_information.user_id = nil
         @order_information.valid?

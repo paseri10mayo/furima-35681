@@ -9,13 +9,11 @@ FactoryBot.define do
 
     address     {'青山1-1-1'}
 
-    building    {}
+    building    {'柳ビル１０３'}
 
     phone       {'09012345678'}
 
     token       {"tok_abcdefghijk00000000000000000"}
 
-    association :user
-    association :item
   end
   end
