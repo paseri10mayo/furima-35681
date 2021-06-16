@@ -63,6 +63,12 @@ RSpec.describe OrderInformation, type: :model do
         expect(@order_information.errors.full_messages).to include('Phone is invalid.')
       end
       
+      it 'phoneが英数混合では保存できないこと' do
+        @order_information.phone = 'slf84988213'
+        @order_information.valid?
+        expect(@order_information.errors.full_messages).to include('Phone is invalid.')
+      end
+
       it 'phoneが12桁以上では保存できないこと' do
         @order_information.phone = '23334444444444444'
         @order_information.valid?
