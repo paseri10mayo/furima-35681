@@ -21,7 +21,7 @@ class OrdersInformationsController < ApplicationController
   private
 
   def order_params
-    params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], order_id: order.id)
+    params.require(:order_information).permit(:postal_code, :area_id, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
@@ -38,6 +38,6 @@ class OrdersInformationsController < ApplicationController
  end
 
  def contributor_confirmation
-  redirect_to root_path unless @item.order == nil
+  redirect_to root_path unless current_user.id != @item.user_id && @item.order == nil
   end
 end
