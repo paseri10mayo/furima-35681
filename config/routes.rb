@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :items do
     resources :comments, only: :create
-  resources :orders_informations, only:[:index, :create]
-end
+    resources :orders_informations, only:[:index, :create]
+    collection do
+      get 'search'
+    end
+  end
 end
