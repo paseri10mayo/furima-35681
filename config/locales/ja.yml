@@ -21,6 +21,8 @@ ja:
         charge_id: 配送料の負担
         area_id: 配送地域
         shipment_id: 発送までの日数
+      comment:
+        c_text: コメント
   activemodel:
     attributes:
       order_information:

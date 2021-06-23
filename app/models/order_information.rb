@@ -9,7 +9,7 @@ class OrderInformation
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "に半角のハイフンを入れて入力してください"}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "を全角のみで入力してください"}
     validates :address
-    validates :phone, format: { with: /\A\d{10,11}\z/, message: "を入力してください"}
+    validates :phone, format: { with: /\A\d{10,11}\z/, message: "を半角の数字で入力してください"}
     validates :user_id
     validates :item_id
   end
