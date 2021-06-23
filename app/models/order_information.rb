@@ -6,15 +6,15 @@ class OrderInformation
 
     validates :token
 
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "に半角のハイフンを入れて入力してください"}
+    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "を全角のみで入力してください"}
     validates :address
-    validates :phone, format: { with: /\A\d{10,11}\z/, message: "is invalid."}
+    validates :phone, format: { with: /\A\d{10,11}\z/, message: "を入力してください"}
     validates :user_id
     validates :item_id
   end
 
-  validates :area_id, numericality: { other_than: 0, message: "can't be blank" }
+  validates :area_id, numericality: { other_than: 0, message: "を選んでください" }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
