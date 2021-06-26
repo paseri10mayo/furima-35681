@@ -45,8 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    # @results = @q.result.includes(:name)  # 検索条件にマッチした商品の情報を取得
-    @results = @q.result
+    @results = @q.result   # 検索条件にマッチした商品の情報を取得
   end
 
   private
