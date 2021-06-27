@@ -32,7 +32,11 @@
   height: 5vh;
   padding-left: 10px;
 }
- 
+
+::placeholder{
+  padding: 13px;
+}
+
 .search-button {
   width: 5vh;
   border: 0;

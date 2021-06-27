@@ -5,9 +5,9 @@
 
    <%= search_form_for @q, url: search_items_path do |f| %>
    <%= f.label :name_cont, '商品名' %>
-   <%= f.text_area :name_eq, class:"input-box", id:"item-name", placeholder:"キーワードから探す", maxlength:"10" %>
+   <%= f.text_area :name_eq, size: "30x0", class:"input-box", id:"item-name", placeholder:"キーワードから探す", maxlength:"10" %>
       <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
+       <%= image_tag "search.png", class:"search-icon" %>
        </button>
       <% end %>
       </div>
